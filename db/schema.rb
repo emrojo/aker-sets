@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160901153629) do
+ActiveRecord::Schema.define(version: 20170411134714) do
 
   create_table "aims", force: :cascade do |t|
     t.string   "name"
@@ -45,6 +45,17 @@ ActiveRecord::Schema.define(version: 20160901153629) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.index ["program_id"], name: "index_collections_on_program_id"
+  end
+
+  create_table "permissions", force: :cascade do |t|
+    t.string  "permitted"
+    t.boolean "r"
+    t.boolean "w"
+    t.boolean "x"
+    t.string  "accessible_type"
+    t.integer "accessible_id"
+    t.index ["accessible_type", "accessible_id"], name: "index_permissions_on_accessible_type_and_accessible_id"
+    t.index ["permitted"], name: "index_permissions_on_permitted"
   end
 
   create_table "product_option_values", force: :cascade do |t|
@@ -100,6 +111,19 @@ ActiveRecord::Schema.define(version: 20160901153629) do
     t.index ["biomaterial_id", "biomaterial_set_id"], name: "index_set_elements_on_biomaterial_id_and_biomaterial_set_id", unique: true
     t.index ["biomaterial_id"], name: "index_set_elements_on_biomaterial_id"
     t.index ["biomaterial_set_id"], name: "index_set_elements_on_biomaterial_set_id"
+  end
+
+  create_table "users", force: :cascade do |t|
+    t.string   "email",               default: "", null: false
+    t.datetime "remember_created_at"
+    t.integer  "sign_in_count",       default: 0,  null: false
+    t.datetime "current_sign_in_at"
+    t.datetime "last_sign_in_at"
+    t.string   "current_sign_in_ip"
+    t.string   "last_sign_in_ip"
+    t.datetime "created_at",                       null: false
+    t.datetime "updated_at",                       null: false
+    t.index ["email"], name: "index_users_on_email", unique: true
   end
 
 end

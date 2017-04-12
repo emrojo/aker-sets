@@ -1,5 +1,5 @@
-class SetsController < ApplicationController
-
+class SetsController < AkerAuthController
+  before_action :authenticate_user!
   def index
   end
 

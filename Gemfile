@@ -41,6 +41,11 @@ gem 'rubocop', '~> 0.41.2', require: false
 
 gem 'pg'
 
+gem 'aker_authentication_gem', :github => 'emrojo/aker-authentication'
+gem 'aker_permission_gem', :github => 'emrojo/aker-permission'
+gem 'bootstrap_form'
+
+
 group :development, :test do
   # Call 'byebug' anywhere in the code to stop execution and get a debugger console
   gem 'byebug', platform: :mri

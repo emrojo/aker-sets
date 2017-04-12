@@ -44,6 +44,8 @@ Rails.application.configure do
 
   config.webpack[:use_manifest] = false
 
+  config.fake_ldap=true
+
   config.materials_root = 'http://materials.dev'
   config.study_root = 'http://studies.dev/api/v1'
   config.sets_root = 'http://sets.dev'
